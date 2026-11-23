@@ -4,6 +4,20 @@ A playable cooperative social word game for **2–4 people around the table**.
 
 Play: https://joshuafe.github.io/convergence/
 
+## Translation Lab — solo experiment
+
+**Play the new solo mockup:** https://joshuafe.github.io/convergence/lab/
+
+You and a rule-based computer partner, Nori, receive different before-and-after observations of a small unknown language. Build messages from two object tokens and a symbol, run experiments on a shared scene, and meet the construction conditions. Name symbols with your own word clues and select explicit hypotheses to compare with Nori. Sharing either original observation is always allowed.
+
+Three introductory missions cover actions, reversed object order, and a moving container. Remix changes symbol sets, assignments, and object order within those same three mission families; it is limited variation, not an endless mission generator. There is no timer or guess penalty. Scene reset and undo retain observed evidence. Any construction satisfying all visible conditions is accepted.
+
+Nori enumerates possible rulebooks from its own note and shared experiments. It never receives the hidden key or your private note unless you explicitly share the note. It can offer an association, suggest an experiment with differing predicted outcomes, and plan from a uniquely inferred rulebook. It does not interpret unrestricted natural language: your word clues are labels, and the selected meaning supplies a testable hypothesis. The game makes no external AI calls and needs no API key.
+
+Progress is browser-local. This solo mockup does not synchronize between devices and is separate from the real multiplayer room service below. The hidden rules are present in the browser source, appropriate for an experimental single-player mockup rather than a secure puzzle service.
+
+The new engine and UI are in `web/lab/` and build to `docs/lab/`; the existing hosted Worker serves the same `/lab/` route. Run `npm run dev` and visit `/lab/`. `node scripts/export-lab.mjs /absolute/output.html` creates a self-contained version that can be opened without a server. Automated tests validate incomplete individual knowledge, unique combined evidence, 135 remixed missions, valid plans, physical feedback, alternative solutions, and the computer partner's information boundary. Browser checks cover all three completions, clue sharing, planned sequences, reset, and refresh persistence; a 375px layout is also checked.
+
 The screens are served by GitHub Pages. Rooms, moves, voting, and private evidence use a separate Cloudflare Worker and D1 database hosted through Sites. This is actual networked multiplayer; local storage is only used to resume the current tab's seat.
 
 ## Try it with your family

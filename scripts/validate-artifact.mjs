@@ -23,3 +23,13 @@ assert.equal(
 );
 
 console.log("Artifact is valid ESM and exports default.fetch");
+for (const [pathname, contentType] of [["/", "text/html"], ["/lab/", "text/html"], ["/lab/app.js", "text/javascript"], ["/lab/engine.js", "text/javascript"], ["/lab/style.css", "text/css"]]) {
+  const response = await workerModule.default.fetch(new Request("https://example.test" + pathname), {});
+  assert.equal(response.status, 200, pathname + " must be served");
+  assert(response.headers.get("Content-Type").startsWith(contentType));
+  assert((await response.text()).length > 100);
+}
+const redirect = await workerModule.default.fetch(new Request("https://example.test/lab"), {});
+assert.equal(redirect.status, 302);
+assert.equal(redirect.headers.get("Location"), "https://example.test/lab/");
+console.log("Original game and solo lab routes, module assets, and redirect are valid");
