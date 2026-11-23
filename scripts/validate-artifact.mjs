@@ -23,7 +23,7 @@ assert.equal(
 );
 
 console.log("Artifact is valid ESM and exports default.fetch");
-for (const [pathname, contentType] of [["/", "text/html"], ["/lab/", "text/html"], ["/lab/app.js", "text/javascript"], ["/lab/engine.js", "text/javascript"], ["/lab/style.css", "text/css"]]) {
+for (const [pathname, contentType] of [["/", "text/html"], ["/lab/", "text/html"], ["/lab/app.js", "text/javascript"], ["/lab/engine.js", "text/javascript"], ["/lab/style.css", "text/css"], ["/lab/watch.html", "text/html"], ["/lab/watch.css", "text/css"]]) {
   const response = await workerModule.default.fetch(new Request("https://example.test" + pathname), {});
   assert.equal(response.status, 200, pathname + " must be served");
   assert(response.headers.get("Content-Type").startsWith(contentType));
@@ -33,3 +33,14 @@ const redirect = await workerModule.default.fetch(new Request("https://example.t
 assert.equal(redirect.status, 302);
 assert.equal(redirect.headers.get("Location"), "https://example.test/lab/");
 console.log("Original game and solo lab routes, module assets, and redirect are valid");
+
+const walkthrough = await workerModule.default.fetch(new Request("https://example.test/lab/watch.html"), {});
+assert.match(walkthrough.headers.get("Content-Security-Policy"), /media-src 'self' https:\/\/joshuafe\.github\.io\/convergence\/media\//);
+for (const name of ["translation-lab-walkthrough.mp4", "translation-lab-walkthrough.jpg"]) {
+  const [sourceMedia, publishedMedia] = await Promise.all([
+    readFile(resolve(projectRoot, "media", name)),
+    readFile(resolve(projectRoot, "docs/media", name)),
+  ]);
+  assert(sourceMedia.equals(publishedMedia), name + " must be copied without text conversion");
+}
+console.log("Walkthrough media is preserved byte-for-byte and allowed by the Worker policy");

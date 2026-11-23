@@ -8,6 +8,10 @@ Play: https://joshuafe.github.io/convergence/
 
 **Play the new solo mockup:** https://joshuafe.github.io/convergence/lab/
 
+**Watch the narrated walkthrough:** https://joshuafe.github.io/convergence/lab/watch.html — 3 min 10 sec, with on-screen captions and a text transcript. It demonstrates a complete first mission and reveals its solution. The game’s **How to play** panel links to the video. Native video controls support phone playback and fullscreen; the MP4 can also be downloaded.
+
+The walkthrough uses actual game screens and a locally generated Kokoro-82M `af_heart` narrator. `media/` contains the MP4 and preview; the build copies them into `docs/media/` for GitHub Pages. The Worker serves the watch page but streams the video and preview from Pages, keeping media out of the Worker bundle. The transcript is embedded in `web/lab/watch.html`. No speech API account is required to watch it.
+
 You and a rule-based computer partner, Nori, receive different before-and-after observations of a small unknown language. Build messages from two object tokens and a symbol, run experiments on a shared scene, and meet the construction conditions. Name symbols with your own word clues and select explicit hypotheses to compare with Nori. Sharing either original observation is always allowed.
 
 Three introductory missions cover actions, reversed object order, and a moving container. Remix changes symbol sets, assignments, and object order within those same three mission families; it is limited variation, not an endless mission generator. There is no timer or guess penalty. Scene reset and undo retain observed evidence. Any construction satisfying all visible conditions is accepted.

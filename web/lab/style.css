@@ -17,6 +17,7 @@
 .topbar{padding-top:17px;padding-bottom:17px}
 .mission-bar{margin-bottom:18px}
 .intro-strip{margin-bottom:16px}
+.walkthrough-link{margin:22px 0}.walkthrough-link .button{display:inline-flex;align-items:center;text-decoration:none;font-size:14px}.walkthrough-link>span{display:block;font-size:13px;line-height:1.5;color:var(--muted);margin-top:10px}
 .goal{line-height:1.35}
 @media(min-width:951px){.message-panel .muted{display:none}.message-panel .panel-head{margin-bottom:13px}.message-panel{padding-top:15px;padding-bottom:15px}.private-panel .evidence-pictures svg{min-height:90px}}
 @media(max-width:1150px) and (min-width:951px){.lab-layout{grid-template-columns:225px minmax(0,1fr) 250px}.dictionary-row{grid-template-columns:32px 1fr 38px}.dictionary-heading{display:none}.dictionary-row input{grid-column:2}.dictionary-row .symbol{grid-row:span 2}.dictionary-row .select-wrap{grid-column:2}.dictionary-row .publish{grid-column:3;grid-row:span 2;align-self:center}.dictionary-row{margin:16px 0}.board-actions{justify-content:flex-start}.board-actions .secondary-actions{width:100%}.partner-actions .button{font-size:14px}}
